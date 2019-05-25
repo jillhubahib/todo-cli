@@ -1,0 +1,15 @@
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+production: &production
+  <<: *default
+  database: db/todo.sqlite3
+
+development:
+  <<: *production
+
+test:
+  <<: *default
+  database: db/todo_test.sqlite3
