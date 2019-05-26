@@ -5,6 +5,8 @@ when "list","ls"
   Todo::Manager.new(:filter => ARGV[1]).list
 when "add","a"
   puts "Added: #{todo.add(ARGV[1..-1].join(" "))}"
+when "done"
+  puts "Done: #{todo.done(ARGV[1])}"
 else
   puts "\nUsage: todo [options] COMMAND\n\n"
   puts "Commands:"

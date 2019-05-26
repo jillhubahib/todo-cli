@@ -29,4 +29,11 @@ RSpec.describe Todo, type: :aruba do
     expect(last_command_started).to have_output(/Added: #{task_name}/)
     expect(::Todo::Task.exists?(name: task_name)).to be_truthy
   end
+
+  it 'completes a todo' do
+    run_command("todo done #{active_task.id}")
+
+    expect(last_command_started).to have_output(/Done: #{active_task.name}/)
+    expect(active_task.reload.completed_at).not_to be_nil
+  end
 end

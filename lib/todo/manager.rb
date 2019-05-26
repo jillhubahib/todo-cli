@@ -13,6 +13,13 @@ module Todo
       task.name
     end
 
+    def done(todo)
+      if task = Task.find_by(id: todo)
+        task.update(completed_at: Time.current)
+        task.name
+      end
+    end
+
     def list
       filtered_tasks.each do |task|
         puts "#{task.id} - #{task.name}"
