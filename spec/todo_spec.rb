@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 RSpec.describe Todo do
   it "has a version number" do
     expect(Todo::VERSION).not_to be nil

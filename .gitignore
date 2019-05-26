@@ -11,3 +11,5 @@ vendor/bundle
 
 # rspec failure tracking
 .rspec_status
+
+/db/todo_test.sqlite3
