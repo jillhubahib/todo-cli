@@ -5,6 +5,9 @@ when "list","ls"
   Todo::Manager.new(:filter => ARGV[1]).list
 when "add","a"
   puts "Added: #{todo.add(ARGV[1..-1].join(" "))}"
+when "clear"
+  puts todo.clear! && "All todos cleared!"
+  todo.list
 when "delete", "del", "d"
   puts "Deleted: #{todo.delete(ARGV[1])}"
 when "done"

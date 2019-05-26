@@ -43,4 +43,11 @@ RSpec.describe Todo, type: :aruba do
     expect(last_command_started).to have_output(/Deleted: #{completed_task.name}/)
     expect(::Todo::Task.find_by(id: completed_task.id)).to be_nil
   end
+
+  it 'removes all todo' do
+    run_command("todo clear")
+
+    expect(last_command_started).to have_output(/All todos cleared/)
+    expect(::Todo::Task.all.size).to be_zero
+  end
 end

@@ -13,6 +13,10 @@ module Todo
       task.name
     end
 
+    def clear!
+      Task.destroy_all
+    end
+
     def delete(todo)
       if task = Task.find_by(id: todo)
         task.destroy
