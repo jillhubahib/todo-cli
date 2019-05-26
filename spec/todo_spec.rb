@@ -1,11 +1,9 @@
 require 'spec_helper'
 
-RSpec.describe Todo do
-  it "has a version number" do
-    expect(Todo::VERSION).not_to be nil
-  end
+RSpec.describe Todo, type: :aruba do
+  it 'display usage' do
+    run_command('todo')
 
-  it "does something useful" do
-    expect(false).to eq(true)
+    expect(last_command_started).to have_output(/Usage: todo/)
   end
 end
