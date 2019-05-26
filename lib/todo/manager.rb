@@ -13,6 +13,13 @@ module Todo
       task.name
     end
 
+    def delete(todo)
+      if task = Task.find_by(id: todo)
+        task.destroy
+        task.name
+      end
+    end
+
     def done(todo)
       if task = Task.find_by(id: todo)
         task.update(completed_at: Time.current)
