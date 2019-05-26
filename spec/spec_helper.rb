@@ -16,6 +16,7 @@ def db_setup
   test_config["database"] = "#{root_path}/#{test_config["database"]}"
 
   ActiveRecord::Base.establish_connection(test_config)
+  `bundle exec rake db:migrate` unless ::Todo::Task.table_exists?
 end
 
 RSpec.configure do |config|
