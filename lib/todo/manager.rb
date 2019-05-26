@@ -8,6 +8,11 @@ module Todo
       db_connect
     end
 
+    def add(todo)
+      task = Task.create(name: todo)
+      task.name
+    end
+
     def list
       filtered_tasks.each do |task|
         puts "#{task.id} - #{task.name}"

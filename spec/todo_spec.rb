@@ -21,4 +21,12 @@ RSpec.describe Todo, type: :aruba do
 
     expect(last_command_started).to have_output(/#{completed_task.id} - #{completed_task.name}/)
   end
+
+  it 'adds a todo' do
+    task_name = build(:task).name
+    run_command("todo add #{task_name}")
+
+    expect(last_command_started).to have_output(/Added: #{task_name}/)
+    expect(::Todo::Task.exists?(name: task_name)).to be_truthy
+  end
 end
