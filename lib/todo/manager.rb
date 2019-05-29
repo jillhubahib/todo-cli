@@ -13,6 +13,15 @@ module Todo
       task.name
     end
 
+    def edit(id, name)
+      if task = Task.find_by(id: id)
+        task.update(name: name)
+        name
+      else
+        "NUM:#{id} not found! Try again."
+      end
+    end
+
     def clear!
       Task.destroy_all
     end

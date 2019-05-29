@@ -85,6 +85,7 @@ Usage: todo [options] COMMAND
 
 Commands:
   add TODO        Adds a todo
+  edit NUM TODO   Modify a todo
   delete NUM      Removes a todo
   done NUM        Completes a todo
   clear           Removes all todo
