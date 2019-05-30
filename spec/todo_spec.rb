@@ -30,6 +30,23 @@ RSpec.describe Todo, type: :aruba do
     expect(::Todo::Task.exists?(name: task_name)).to be_truthy
   end
 
+  it 'modify an existing todo' do
+    task_id = active_task.id
+    task_name = 'Dancing'
+    run_command("todo edit #{task_id} #{task_name}")
+
+    expect(last_command_started).to have_output(/Edited: #{task_name}/)
+    expect(::Todo::Task.exists?(name: task_name)).to be_truthy
+  end
+
+  it 'modify a non existent todo' do
+    task_name = 'Dancing'
+    task_id = -1
+    run_command("todo edit #{task_id} #{task_name}")
+    expect(last_command_started).to have_output(/Edited: NUM:-1 not found! Try again./)
+    expect(::Todo::Task.exists?(name: task_name)).to be_falsey
+  end
+
   it 'completes a todo' do
     run_command("todo done #{active_task.id}")
 
